@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: pipeline
+  name: pipeline
+spec:
+  selector:
+    matchLabels:
+      app: pipeline
+  template:
+    metadata:
+      labels:
+        app: pipeline
+    spec:
+      containers:
+        - image: gcr.io/hightowerlabs/pipeline
+          name: pipeline
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
